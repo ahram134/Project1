@@ -233,6 +233,9 @@ body {
 .menu .row .menu-card img {
   border-radius: 50%;
   width: 80%;
+  height: 200px; /* tambahkan tinggi tetap */
+  object-fit: cover; /* tambahkan agar gambar terpotong proporsional */
+  object-position: center; /* posisi gambar di tengah */
 }
 
 .menu .row .menu-card .menu-card-title {
