@@ -425,3 +425,8 @@ footer .credit a {
     font-size: 55%;
   }
 }
+
+i[data-feather="twitter"],
+i[data-feather="facebook"] {
+  display: none !important;
+}
