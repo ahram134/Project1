@@ -227,6 +227,7 @@ body {
 .menu .row .menu-card {
   text-align: center;
   padding-bottom: 4rem;
+  background: transparent;
 }
 
 .menu .row .menu-card img {
