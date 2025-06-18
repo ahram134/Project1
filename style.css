@@ -228,16 +228,17 @@ body {
   text-align: center;
   padding-bottom: 4rem;
   background: transparent;
+  width: 250px; /* tambahkan lebar tetap untuk card */
 }
 
 .menu .row .menu-card img {
   border-radius: 50%;
-  width: 250px !important;
-  height: 250px !important;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   object-position: center;
-  display: block;
   margin: 0 auto;
+  display: block;
 }
 
 .menu .row .menu-card .menu-card-title {
