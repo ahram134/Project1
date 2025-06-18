@@ -430,3 +430,8 @@ i[data-feather="twitter"],
 i[data-feather="facebook"] {
   display: none !important;
 }
+
+/* Atau jika ingin warna putih */
+i[data-feather="instagram"] {
+  color: white !important;
+}
