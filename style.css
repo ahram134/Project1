@@ -232,10 +232,12 @@ body {
 
 .menu .row .menu-card img {
   border-radius: 50%;
-  width: 80%;
-  height: 200px; /* tambahkan tinggi tetap */
-  object-fit: cover; /* tambahkan agar gambar terpotong proporsional */
-  object-position: center; /* posisi gambar di tengah */
+  width: 200px !important; /* paksa lebar 200px */
+  height: 200px !important; /* paksa tinggi 200px */
+  object-fit: cover; /* potong gambar agar pas tanpa distorsi */
+  object-position: center; /* fokus ke tengah gambar */
+  display: block;
+  margin: 0 auto;
 }
 
 .menu .row .menu-card .menu-card-title {
