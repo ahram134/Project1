@@ -112,21 +112,22 @@
           class="map"
         ></iframe>
 
-        <form action="">
-          <div class="input-grup">
-            <i data-feather="user"></i>
-            <input type="text" placeholder="nama" />
-          </div>
-          <div class="input-grup">
-            <i data-feather="mail"></i>
-            <input type="text" placeholder="email" />
-          </div>
-          <div class="input-grup">
-            <i data-feather="phone"></i>
-            <input type="text" placeholder="no hp" />
-          </div>
-          <button type="submit" class="btn">KIRIM PESAN</button>
-        </form>
+<form action="https://formspree.io/f/mjkregno" method="POST">
+  <div class="input-grup">
+    <i data-feather="user"></i>
+    <input type="text" name="nama" placeholder="nama" required />
+  </div>
+  <div class="input-grup">
+    <i data-feather="mail"></i>
+    <input type="email" name="email" placeholder="email" required />
+  </div>
+  <div class="input-grup">
+    <i data-feather="phone"></i>
+    <input type="tel" name="nohp" placeholder="no hp" required />
+  </div>
+  <button type="submit" class="btn">KIRIM PESAN</button>
+</form>
+
       </div>
     </section>
     <!-- end -->
