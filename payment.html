@@ -186,7 +186,7 @@
     </div>
     <img src="payment/dana-qr.jpg" alt="QR DANA Ahram" class="qr-img" />
     <button class="btn-paid" id="btn-paid">Sudah Bayar!</button>
-    <button class="btn-back" onclick="window.location.href='index.html'">Tambah menu lagi?</button>
+    <button class="btn-back" onclick="window.location.href='index.html#menu'">Tambah menu lagi?</button>
   </section>
 
   <!-- Modal Form -->
@@ -194,7 +194,9 @@
     <div class="modal-content">
       <h3>Isi nama kamu ya!</h3>
       <form id="buyer-form" action="https://formspree.io/f/mjkregno" method="POST">
-        <input type="text" name="nama" placeholder="Nama" required />
+        <input type="text" name="name" placeholder="Nama" required />
+        <input type="hidden" name="menu_yang_dibeli" id="menu-yang-dibeli" />
+        <input type="hidden" name="date" id="date-input" />
         <div style="margin-top:1rem;">
           <button type="submit" class="btn primary">Kirim</button>
           <button type="button" id="close-modal" class="btn secondary">Batal</button>
@@ -218,15 +220,34 @@
     const form = document.getElementById('buyer-form');
     const successMsg = document.getElementById('form-success');
     const closeBtn = document.getElementById('close-modal');
+    const menuInput = document.getElementById('menu-yang-dibeli');
+    const dateInput = document.getElementById('date-input');
 
-    // Tampilkan modal saat tombol "Sudah Bayar!" diklik
+    // Fungsi untuk membuat ringkasan menu dari cart
+    function getCartSummary() {
+      let merged = {};
+      cart.forEach(item => {
+        if (merged[item.nama]) {
+          merged[item.nama].quantity += 1;
+        } else {
+          merged[item.nama] = {...item, quantity: 1};
+        }
+      });
+      return Object.values(merged).map(item => `${item.nama} x ${item.quantity}`).join(', ');
+    }
+
+    // Saat tombol "Sudah Bayar!" diklik, tampilkan modal dan isi input hidden
     btnPaid.onclick = () => {
+      menuInput.value = getCartSummary();
+      dateInput.value = new Date().toLocaleString();
       modal.style.display = 'flex';
     };
 
     // Tutup modal saat klik batal
     closeBtn.onclick = () => {
       modal.style.display = 'none';
+      form.style.display = 'block';
+      successMsg.style.display = 'none';
     };
 
     // Submit form ke Formspree via fetch API
