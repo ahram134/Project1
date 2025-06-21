@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  font-family: "Poppin", sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--bg);
   color: #fff;
 }
@@ -154,11 +154,6 @@ body {
   padding: 8rem 7% 1.4rem;
 }
 
-.about,
-.menu {
-  padding: 8rem 7% 1.4rem;
-}
-
 .about h2,
 .menu h2,
 .contact h2 {
@@ -228,7 +223,7 @@ body {
   text-align: center;
   padding-bottom: 4rem;
   background: transparent;
-  width: 250px; /* tambahkan lebar tetap untuk card */
+  width: 250px;
 }
 
 .menu .row .menu-card img {
@@ -239,6 +234,7 @@ body {
   object-position: center;
   margin: 0 auto;
   display: block;
+  cursor: pointer;
 }
 
 .menu .row .menu-card .menu-card-title {
@@ -277,8 +273,15 @@ body {
   width: 100%;
   padding: 2rem;
   font-size: 1.7rem;
-  background: none;
+  background: #111;
   color: #fff;
+  border: 1px solid #555;
+}
+
+.contact .row form .input-grup input:focus {
+  background: #111;
+  color: #fff;
+  outline: none;
 }
 
 .contact .row form .btn {
@@ -299,16 +302,16 @@ footer {
   margin-top: 3rem;
 }
 
-footer .socials {
+footer .social-media {
   padding: 1rem 0;
 }
 
-footer .socials a {
+footer .social-media a {
   color: #fff;
   margin: 1rem;
 }
 
-footer .socials a:hover,
+footer .social-media a:hover,
 footer .links a:hover {
   color: var(--bg);
 }
@@ -331,15 +334,79 @@ footer .credit a {
   font-weight: 700;
 }
 
+/* cart icon */
+#cart-icon {
+  position: relative;
+  margin-right: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+#cart-icon i {
+  width: 24px;
+  height: 24px;
+}
+
+#cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: crimson;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #222;
+  color: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background: #b6895b;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-buttons button:hover {
+  background: #a3764d;
+}
+
 /* media queries */
-/* laptop */
 @media (max-width: 1366px) {
   html {
     font-size: 62.5%;
   }
 }
 
-/* tablet */
 @media (max-width: 768px) {
   html {
     font-size: 62.5%;
@@ -419,114 +486,12 @@ footer .credit a {
   }
 }
 
-/* mobile */
 @media (max-width: 450px) {
   html {
     font-size: 55%;
   }
 }
 
-i[data-feather="twitter"],
-i[data-feather="facebook"] {
-  display: none !important;
-}
-
-/* Atau jika ingin warna putih */
 i[data-feather="instagram"] {
   color: white !important;
-}
-
-.input-grup input {
-  background-color: #111;     /* warna latar input (gelap) */
-  color: #fff;                /* warna teks (putih) */
-  border: 1px solid #555;     /* garis pinggir */
-}
-
-.input-grup input:focus {
-  background-color: #111;     /* tetap gelap saat difokus */
-  color: #fff;
-  outline: none;              /* hilangkan garis biru bawaan */
-}
-
-#cart-icon {
-  position: relative;
-  margin-right: 20px;
-  color: white;
-  text-decoration: none;
-}
-
-#cart-icon i {
-  width: 24px;
-  height: 24px;
-}
-
-#cart-count {
-  position: absolute;
-  top: -6px;
-  right: -10px;
-  background: crimson;
-  color: white;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 50%;
-  font-weight: bold;
-}
-
-/* Keranjang */
-#cart-section {
-  background: #111;
-  color: #fff;
-  padding: 2rem 7%;
-}
-
-#cart {
-  list-style: none;
-  padding-left: 0;
-}
-
-#cart li {
-  margin-bottom: 5px;
-  border-bottom: 1px dashed #555;
-  padding-bottom: 5px;
-}
-
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.modal-content {
-  background: #222;
-  color: white;
-  padding: 30px;
-  border-radius: 8px;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-}
-
-.modal-buttons {
-  margin-top: 20px;
-}
-
-.modal-buttons button {
-  padding: 10px 20px;
-  margin: 0 10px;
-  border: none;
-  background: #b6895b;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.modal-buttons button:hover {
-  background: #a3764d;
 }
