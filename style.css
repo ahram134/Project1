@@ -495,3 +495,115 @@ footer .credit a {
 i[data-feather="instagram"] {
   color: white !important;
 }
+
+body.dark-bg {
+  background: #181818;
+  color: #fff;
+}
+
+.cart-section-dark {
+  background: #232323;
+  color: #fff;
+  margin: 100px auto 30px auto;
+  border-radius: 15px;
+  max-width: 600px;
+  padding: 2rem 2rem 1rem 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+#cart-section h2 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  background: #292929;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.cart-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 1rem;
+  background: #333;
+}
+
+.cart-info {
+  flex: 1;
+}
+
+.cart-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.cart-price {
+  color: #b6895b;
+  font-size: 1rem;
+}
+
+.remove-btn {
+  background: #3a3a3a;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.remove-btn:hover {
+  background: #b6895b;
+  color: #fff;
+}
+
+.cart-empty {
+  text-align: center;
+  color: #aaa;
+  font-size: 1.1rem;
+  margin: 2rem 0;
+}
+
+#cart-total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem 0;
+  color: #fff;
+  text-align: right;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn.primary {
+  background: #b6895b;
+  color: #fff;
+}
+
+.btn.danger {
+  background: #a33;
+  color: #fff;
+}
+
+.btn:disabled {
+  background: #444 !important;
+  color: #aaa !important;
+  cursor: not-allowed;
+}
