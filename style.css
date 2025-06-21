@@ -293,6 +293,7 @@ body {
   border: none; /* Penting! Menghilangkan border default textarea */
   outline: none; /* Penting! Menghilangkan outline saat fokus */
   resize: vertical; /* Opsional: Memungkinkan pengguna mengubah ukuran textarea secara vertikal */
+  height: 15rem;
 }
 
 /* Jika Anda memiliki gaya untuk input:focus, Anda juga bisa menambahkan textarea:focus */
