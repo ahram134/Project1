@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
+    /* ... (CSS sama seperti sebelumnya, tidak berubah) ... */
     body.dark-bg {
       background: #181818;
       color: #fff;
@@ -159,6 +160,7 @@
       margin-top: 1rem;
       color: #b6895b;
       font-weight: 600;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -202,8 +204,9 @@
           <button type="button" id="close-modal" class="btn secondary">Batal</button>
         </div>
       </form>
-      <div id="form-success" style="display:none;">
-        Terima kasih! Data kamu sudah kami terima.
+      <div id="form-success" style="display:none;" title="Klik di mana saja untuk kembali ke beranda">
+        Terima kasih! Data kamu sudah kami terima.<br />
+        <small style="font-size:0.9rem; margin-top:0.5rem; display:block;">Klik di mana saja untuk kembali ke beranda</small>
       </div>
     </div>
   </div>
@@ -265,8 +268,14 @@
         if (response.ok) {
           form.style.display = 'none';
           successMsg.style.display = 'block';
+
           // Kosongkan cart setelah submit
           localStorage.removeItem('cart');
+
+          // Tambahkan event listener klik di seluruh modal untuk redirect ke beranda
+          modal.addEventListener('click', () => {
+            window.location.href = 'index.html';
+          }, { once: true });
         } else {
           alert('Terjadi kesalahan, coba lagi.');
         }
