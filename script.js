@@ -2,9 +2,10 @@
 const navbarNav = document.querySelector(".navbar-nav");
 const hamburger = document.querySelector("#hamburger-menu");
 
-hamburger.onclick = () => {
+hamburger.addEventListener("click", function (e) {
+  e.preventDefault(); // Mencegah aksi default <a href="#">
   navbarNav.classList.toggle("active");
-};
+});
 
 document.addEventListener("click", function (e) {
   if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
