@@ -13,19 +13,8 @@ document.addEventListener("click", function (e) {
 });
 
 // Shopping Cart
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let selectedProduct = {};
-
-function updateCartDisplay() {
-  const cartElement = document.getElementById("cart");
-  if (cart.length === 0) {
-    cartElement.innerHTML = "<li>Keranjang kosong</li>";
-    return;
-  }
-  cartElement.innerHTML = cart
-    .map((item, i) => `<li>${i + 1}. ${item.nama} - Rp ${item.harga.toFixed(1)}</li>`)
-    .join("");
-}
 
 function updateCartCount() {
   document.getElementById("cart-count").textContent = cart.length;
@@ -43,7 +32,10 @@ document.getElementById("cancel-btn").onclick = () => {
 
 document.getElementById("buy-btn").onclick = () => {
   cart.push({ ...selectedProduct });
+  localStorage.setItem('cart', JSON.stringify(cart));
   document.getElementById("custom-modal").style.display = "none";
-  updateCartDisplay();
   updateCartCount();
 };
+
+// Inisialisasi cart count saat halaman dimuat
+updateCartCount();
