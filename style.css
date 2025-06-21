@@ -607,3 +607,47 @@ body.dark-bg {
   color: #aaa !important;
   cursor: not-allowed;
 }
+
+.payment-form {
+  background: #232323;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.payment-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.payment-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #b6895b;
+  font-weight: bold;
+}
+
+.payment-form input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #181818;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.payment-form .form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.payment-success {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.payment-success .checkmark {
+  font-size: 3rem;
+  color: #b6895b;
+  margin-bottom: 1rem;
+}
