@@ -284,6 +284,23 @@ body {
   outline: none;
 }
 
+.contact .row form .input-grup textarea {
+  width: 100%;
+  padding: 2rem; /* Sesuaikan dengan padding input Anda */
+  font-size: 1.7rem; /* Sesuaikan dengan font-size input Anda */
+  background: #111; /* Sesuaikan dengan warna background input Anda */
+  color: #fff; /* Sesuaikan dengan warna teks input Anda */
+  border: none; /* Penting! Menghilangkan border default textarea */
+  outline: none; /* Penting! Menghilangkan outline saat fokus */
+  resize: vertical; /* Opsional: Memungkinkan pengguna mengubah ukuran textarea secara vertikal */
+}
+
+/* Jika Anda memiliki gaya untuk input:focus, Anda juga bisa menambahkan textarea:focus */
+.contact .row form .input-grup textarea:focus {
+  background: #222; /* Warna background saat fokus */
+  color: #fff;
+}
+
 .contact .row form .btn {
   margin-top: 3rem;
   display: inline-block;
