@@ -3,33 +3,40 @@
   --bg: #010101;
 }
 
+/* Global Reset and Box-Sizing */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  text-decoration: none;
+  box-sizing: border-box; /* Good practice for consistent sizing */
+  outline: none; /* Remove default focus outline */
+  border: none; /* Remove default borders */
+  text-decoration: none; /* Remove default underline from links */
 }
 
 html {
   scroll-behavior: smooth;
+  /* Font size for larger screens (default desktop base font size) */
+  /* This is 10px if root font size is 16px (62.5% of 16px = 10px). */
+  /* This makes rem units easier to calculate (e.g., 1.4rem = 14px) */
+  font-size: 62.5%; /* Move this from media queries to here */
 }
 
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg);
   color: #fff;
+  /* For better mobile scrolling (iOS bounce effect) */
+  -webkit-overflow-scrolling: touch;
 }
 
-/* navbar */
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.4rem 7%;
-  background-color: rgb(1, 1, 1, 0.8);
-  border-bottom: 1px solid #513c28;
+  background-color: rgba(1, 1, 1, 0.8); /* Use rgba for transparency */
+  border-bottom: 0.1rem solid #513c28; /* Use rem for consistency */
   position: fixed;
   top: 0;
   left: 0;
@@ -82,10 +89,10 @@ body {
 }
 
 #hamburger-menu {
-  display: none;
+  display: none; /* Hidden by default on desktop */
 }
 
-/* hero section */
+/* Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -104,11 +111,8 @@ body {
   width: 100%;
   height: 30%;
   bottom: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(1, 1, 3, 1) 8%,
-    rgba(255, 255, 255, 0) 50%
-  );
+  /* Use rgba for better control over transparency */
+  background: linear-gradient(0deg, rgba(1, 1, 3, 1) 8%, rgba(255, 255, 255, 0) 50%);
 }
 
 .hero .content {
@@ -117,9 +121,9 @@ body {
 }
 
 .hero .content h1 {
-  font-size: 5em;
+  font-size: 5em; /* Consider using rem here, e.g., 5rem */
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  text-shadow: 0.1rem 0.1rem 0.3rem rgba(1, 1, 3, 0.5); /* Use rem for consistency */
   line-height: 1.2;
 }
 
@@ -132,7 +136,7 @@ body {
   margin-top: 1rem;
   line-height: 1.4;
   font-weight: 100;
-  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  text-shadow: 0.1rem 0.1rem 0.3rem rgba(1, 1, 3, 0.5); /* Use rem for consistency */
   mix-blend-mode: difference;
 }
 
@@ -144,10 +148,10 @@ body {
   color: #fff;
   background-color: var(--primary);
   border-radius: 0.5rem;
-  box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  box-shadow: 0.1rem 0.1rem 0.3rem rgba(1, 1, 3, 0.5); /* Use rem for consistency */
 }
 
-/* about section */
+/* Sections Common Styles */
 .about,
 .menu,
 .contact {
@@ -168,26 +172,39 @@ body {
   color: var(--primary);
 }
 
+/* About Section */
 .about .row {
   display: flex;
+  flex-wrap: wrap; /* Added flex-wrap for responsiveness on smaller screens */
+  gap: 2rem; /* Add gap for spacing between image and content */
+  justify-content: center; /* Center items when they wrap */
+  align-items: center; /* Align items vertically */
 }
 
 .about .row .about-img {
   flex: 1 1 45rem;
+  max-width: 100%; /* Ensure it doesn't overflow on small screens */
+  text-align: center; /* Center image if it's smaller than flex-basis */
 }
 
 .about .row .about-img img {
   width: 100%;
+  height: auto; /* Ensure aspect ratio is maintained */
+  max-width: 45rem; /* Limit max size on large screens if flex-basis allows it to grow more */
+  border-radius: 0.8rem; /* Soften edges */
+  box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.2); /* Subtle shadow */
 }
 
 .about .row .content {
   flex: 1 1 35rem;
   padding: 0 1rem;
+  max-width: 100%; /* Ensure it doesn't overflow on small screens */
 }
 
 .about .row .content h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
+  text-align: left; /* Ensure text alignment for content */
 }
 
 .about .row .content p {
@@ -195,9 +212,10 @@ body {
   font-size: 1.2rem;
   font-weight: 100;
   line-height: 1.6;
+  text-align: left; /* Ensure text alignment for content */
 }
 
-/* menu section */
+/* Menu Section */
 .menu h2,
 .contact h2 {
   margin-bottom: 1rem;
@@ -215,86 +233,118 @@ body {
 .menu .row {
   display: flex;
   flex-wrap: wrap;
+  gap: 3rem; /* Added gap for spacing between menu cards */
   margin-top: 5rem;
   justify-content: center;
+  align-items: flex-start; /* Align items to the top if they have different heights */
 }
 
 .menu .row .menu-card {
   text-align: center;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem; /* Reduced padding, adjusted below */
   background: transparent;
-  width: 250px;
+  width: 25rem; /* Using rem for consistency (250px) */
+  /* Added specific styles for menu cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes price to bottom if content varies */
+  align-items: center;
 }
 
 .menu .row .menu-card img {
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 20rem; /* Use rem for consistency (200px) */
+  height: 20rem; /* Use rem for consistency (200px) */
+  object-fit: cover; /* 👍 Good! This helps make the image fill the circle */
   object-position: center;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem; /* Added bottom margin */
   display: block;
   cursor: pointer;
+  box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.3); /* Subtle shadow for depth */
 }
 
 .menu .row .menu-card .menu-card-title {
   margin: 1rem auto 0.5rem;
+  font-size: 1.6rem; /* Ensure consistent font sizing */
+  color: #fff;
+  white-space: nowrap; /* Prevent title from wrapping to next line if short */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis if title is too long */
 }
 
-/* contact */
+.menu .row .menu-card .menu-card-price {
+  font-size: 1.4rem; /* Add specific style for price */
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Contact Section */
 .contact .row {
   display: flex;
   margin-top: 2rem;
   background-color: #222;
+  flex-wrap: wrap; /* Ensure it wraps on smaller screens */
+  border-radius: 0.8rem; /* Slightly rounded corners for the contact section */
+  overflow: hidden; /* Important for border-radius if content overflows */
+  box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.2); /* Subtle shadow */
 }
 
 .contact .row .map {
   flex: 1 1 45rem;
   width: 100%;
-  object-fit: cover;
+  height: 40rem; /* Set a default height for the map on larger screens */
+  object-fit: cover; /* Good for map images if applicable */
+  border: none; /* Ensure no extra border on map */
 }
 
 .contact .row form {
   flex: 1 1 45rem;
   padding: 5rem 2rem;
   text-align: center;
+  background-color: #010101; /* Using var(--bg) if you want consistent background */
 }
 
 .contact .row form .input-grup {
   display: flex;
   align-items: center;
   margin-top: 2rem;
-  background-color: var(--bg);
-  border: 1px solid #eee;
-  padding-left: 2rem;
+  background-color: var(--bg); /* Using var(--bg) for consistency */
+  border: 0.1rem solid #eee; /* Using rem for consistency */
+  padding-left: 1.5rem; /* Adjusted padding to be consistent */
+  border-radius: 0.5rem; /* Add subtle border-radius to input groups */
 }
 
+/* ⚠ Perbaikan: Menghilangkan garis pada input */
 .contact .row form .input-grup input {
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem 1rem; /* Adjusted padding for better fit with icon and consistent */
   font-size: 1.7rem;
-  background: #111;
+  background: transparent; /* Use transparent or #010101 for better look */
   color: #fff;
-  border: none;
+  border: none; /* Menghilangkan garis input */
+  outline: none; /* Penting juga untuk menghilangkan outline saat focus */
 }
 
-.contact .row form .input-grup input:focus {
-  background: #111;
-  color: #fff;
-  outline: none;
-}
-
+/* Perbaikan: Menghilangkan garis pada textarea & mengatur tinggi */
 .contact .row form .input-grup textarea {
   width: 100%;
-  padding: 2rem; /* Sesuaikan dengan padding input Anda */
-  font-size: 1.7rem; /* Sesuaikan dengan font-size input Anda */
-  background: #111; /* Sesuaikan dengan warna background input Anda */
+  padding: 1.5rem 1rem; /* Sesuaikan dengan padding input */
+  font-size: 1.7rem; /* Sesuaikan dengan font-size input */
+  background: transparent; /* Use transparent or #010101 for better look */
   color: #fff; /* Sesuaikan dengan warna teks input Anda */
   border: none; /* Penting! Menghilangkan border default textarea */
   outline: none; /* Penting! Menghilangkan outline saat fokus */
   resize: vertical; /* Opsional: Memungkinkan pengguna mengubah ukuran textarea secara vertikal */
-  height: 8rem;
+  height: 12rem; /* Menyesuaikan tinggi textarea. Anda mungkin perlu menyesuaikan nilai ini di DevTools. */
 }
+
+.contact .row form .input-grup i {
+  color: #fff; /* Pastikan ikon di input group memiliki warna */
+  font-size: 1.7rem; /* Sesuaikan ukuran ikon */
+  margin-right: 0.8rem; /* Memberi sedikit jarak antara ikon dan input */
+}
+
 
 .contact .row form .btn {
   margin-top: 3rem;
@@ -304,9 +354,16 @@ body {
   color: #fff;
   background-color: var(--primary);
   cursor: pointer;
+  border-radius: 0.5rem; /* Added border-radius for consistency */
+  transition: background-color 0.2s ease; /* Add transition for hover effect */
 }
 
-/* footer */
+.contact .row form .btn:hover {
+  background-color: #a3764d; /* Slightly darker shade on hover */
+}
+
+
+/* Footer */
 footer {
   background-color: var(--primary);
   text-align: center;
@@ -321,6 +378,7 @@ footer .social-media {
 footer .social-media a {
   color: #fff;
   margin: 1rem;
+  font-size: 1.8rem; /* Make icons slightly larger */
 }
 
 footer .social-media a:hover,
@@ -335,6 +393,7 @@ footer .links {
 footer .links a {
   color: #fff;
   padding: 0.7rem 1rem;
+  font-size: 1.2rem; /* Consistent font size */
 }
 
 footer .credit {
@@ -346,27 +405,27 @@ footer .credit a {
   font-weight: 700;
 }
 
-/* cart icon */
+/* Cart Icon */
 #cart-icon {
   position: relative;
-  margin-right: 20px;
+  margin-right: 2rem; /* Use rem for consistency (20px) */
   color: white;
   text-decoration: none;
 }
 
 #cart-icon i {
-  width: 24px;
-  height: 24px;
+  width: 2.4rem; /* Use rem for consistency (24px) */
+  height: 2.4rem; /* Use rem for consistency (24px) */
 }
 
 #cart-count {
   position: absolute;
-  top: -6px;
-  right: -10px;
+  top: -0.6rem; /* Use rem for consistency */
+  right: -1rem; /* Use rem for consistency */
   background: crimson;
   color: white;
-  font-size: 12px;
-  padding: 2px 6px;
+  font-size: 1rem; /* Use rem for consistency (12px) */
+  padding: 0.2rem 0.6rem; /* Use rem for consistency */
   border-radius: 50%;
   font-weight: bold;
 }
@@ -387,24 +446,24 @@ footer .credit a {
 .modal-content {
   background: #222;
   color: white;
-  padding: 30px;
-  border-radius: 8px;
+  padding: 3rem; /* Use rem for consistency */
+  border-radius: 0.8rem; /* Use rem for consistency */
   text-align: center;
   width: 90%;
-  max-width: 400px;
+  max-width: 40rem; /* Use rem for consistency (400px) */
 }
 
 .modal-buttons {
-  margin-top: 20px;
+  margin-top: 2rem; /* Use rem for consistency */
 }
 
 .modal-buttons button {
-  padding: 10px 20px;
-  margin: 0 10px;
+  padding: 1rem 2rem; /* Use rem for consistency */
+  margin: 0 1rem; /* Use rem for consistency */
   border: none;
   background: #b6895b;
   color: white;
-  border-radius: 5px;
+  border-radius: 0.5rem; /* Use rem for consistency */
   cursor: pointer;
 }
 
@@ -412,20 +471,18 @@ footer .credit a {
   background: #a3764d;
 }
 
-/* media queries */
+/* Media Queries */
 @media (max-width: 1366px) {
-  html {
-    font-size: 62.5%;
-  }
+  /* html { font-size: 62.5%; } -- Moved to global html rule */
 }
 
 @media (max-width: 768px) {
   html {
-    font-size: 62.5%;
+    font-size: 55%; /* Slightly smaller base font for tablet/small desktop */
   }
 
   #hamburger-menu {
-    display: inline-block;
+    display: inline-block; /* Show hamburger on smaller screens */
   }
 
   .navbar .navbar-nav {
@@ -459,7 +516,7 @@ footer .credit a {
   }
 
   .about .row {
-    flex-wrap: wrap;
+    flex-direction: column; /* Stack columns vertically on mobile */
   }
 
   .about .row .about-img img {
@@ -469,8 +526,15 @@ footer .credit a {
   }
 
   .about .row .content {
-    padding: 0;
+    padding: 0 1rem; /* Keep some padding if desired */
+    text-align: center; /* Center content on mobile */
   }
+
+  .about .row .content h3,
+  .about .row .content p {
+    text-align: center; /* Center specific text elements */
+  }
+
 
   .about .row .content h3 {
     margin-top: 1rem;
@@ -481,12 +545,22 @@ footer .credit a {
     font-size: 1.6rem;
   }
 
+  .menu .row .menu-card {
+    width: 100%; /* Make menu cards take full width on mobile */
+    max-width: 30rem; /* Limit max width for better readability on large phones */
+  }
+
+  .menu .row .menu-card img {
+    width: 18rem; /* Make images slightly smaller for mobile */
+    height: 18rem;
+  }
+
   .menu p {
     font-size: 1.2rem;
   }
 
   .contact .row {
-    flex-wrap: wrap;
+    flex-direction: column; /* Stack map and form vertically */
   }
 
   .contact .row .map {
@@ -494,16 +568,26 @@ footer .credit a {
   }
 
   .contact .row form {
-    padding-top: 0;
+    padding-top: 2rem; /* Added padding top for form on mobile */
   }
 }
 
 @media (max-width: 450px) {
   html {
-    font-size: 55%;
+    font-size: 50%; /* Even smaller base font for very small screens */
+  }
+
+  .hero .content h1 {
+    font-size: 4em; /* Adjust hero title for very small screens */
+  }
+
+  .menu .row .menu-card img {
+    width: 15rem; /* Further reduce image size for very small screens */
+    height: 15rem;
   }
 }
 
+/* Custom Styles (Keep these if they are intentional) */
 i[data-feather="instagram"] {
   color: white !important;
 }
@@ -513,14 +597,15 @@ body.dark-bg {
   color: #fff;
 }
 
+/* Cart Section Styles (Assuming these are for a separate cart page or modal) */
 .cart-section-dark {
   background: #232323;
   color: #fff;
-  margin: 100px auto 30px auto;
-  border-radius: 15px;
-  max-width: 600px;
+  margin: 10rem auto 3rem auto; /* Adjusted margin-top to account for fixed navbar */
+  border-radius: 1.5rem; /* Use rem for consistency */
+  max-width: 60rem; /* Use rem for consistency */
   padding: 2rem 2rem 1rem 2rem;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  box-shadow: 0 0.8rem 3.2rem 0 rgba(31, 38, 135, 0.15); /* Use rem for consistency */
 }
 
 #cart-section h2 {
@@ -534,15 +619,15 @@ body.dark-bg {
   align-items: center;
   background: #292929;
   margin-bottom: 1rem;
-  border-radius: 10px;
+  border-radius: 1rem; /* Use rem for consistency */
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 0.2rem 0.8rem rgba(0,0,0,0.06); /* Use rem for consistency */
 }
 
 .cart-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
+  width: 6rem; /* Use rem for consistency */
+  height: 6rem; /* Use rem for consistency */
+  border-radius: 0.8rem; /* Use rem for consistency */
   object-fit: cover;
   margin-right: 1rem;
   background: #333;
@@ -559,7 +644,7 @@ body.dark-bg {
 }
 
 .cart-price {
-  color: #b6895b;
+  color: var(--primary); /* Use var for consistency */
   font-size: 1rem;
 }
 
@@ -568,17 +653,19 @@ body.dark-bg {
   border: none;
   color: #fff;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 3.6rem; /* Use rem for consistency */
+  height: 3.6rem; /* Use rem for consistency */
+  font-size: 1.3rem; /* Use rem for consistency */
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s;
 }
 
 .remove-btn:hover {
-  background: #b6895b;
+  background: var(--primary); /* Use var for consistency */
   color: #fff;
 }
 
@@ -605,7 +692,7 @@ body.dark-bg {
 }
 
 .btn.primary {
-  background: #b6895b;
+  background: var(--primary); /* Use var for consistency */
   color: #fff;
 }
 
@@ -622,9 +709,9 @@ body.dark-bg {
 
 .payment-form {
   background: #232323;
-  border-radius: 12px;
+  border-radius: 1.2rem; /* Use rem for consistency */
   padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 0.2rem 0.8rem rgba(0,0,0,0.08); /* Use rem for consistency */
 }
 
 .payment-form .form-group {
@@ -634,15 +721,15 @@ body.dark-bg {
 .payment-form label {
   display: block;
   margin-bottom: 0.3rem;
-  color: #b6895b;
+  color: var(--primary); /* Use var for consistency */
   font-weight: bold;
 }
 
 .payment-form input {
   width: 100%;
   padding: 0.7rem;
-  border-radius: 6px;
-  border: 1px solid #444;
+  border-radius: 0.6rem; /* Use rem for consistency */
+  border: 0.1rem solid #444; /* Use rem for consistency */
   background: #181818;
   color: #fff;
   font-size: 1rem;
@@ -660,47 +747,47 @@ body.dark-bg {
 
 .payment-success .checkmark {
   font-size: 3rem;
-  color: #b6895b;
+  color: var(--primary); /* Use var for consistency */
   margin-bottom: 1rem;
 }
 
-/* Tombol utama */
+/* Primary Button */
 .btn-primary {
-  background: linear-gradient(45deg, #b6895b, #d4af7f);
+  background: linear-gradient(45deg, var(--primary), #d4af7f); /* Use var for consistency */
   color: #fff;
   padding: 0.8rem 2rem;
   font-weight: 700;
-  border-radius: 30px;
+  border-radius: 3rem; /* Use rem for consistency */
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  box-shadow: 0 5px 15px rgba(182, 137, 91, 0.6);
+  box-shadow: 0 0.5rem 1.5rem rgba(182, 137, 91, 0.6); /* Use rem for consistency */
 }
 
 .btn-primary:hover {
-  background: linear-gradient(45deg, #d4af7f, #b6895b);
-  box-shadow: 0 8px 20px rgba(212, 175, 127, 0.8);
+  background: linear-gradient(45deg, #d4af7f, var(--primary)); /* Use var for consistency */
+  box-shadow: 0 0.8rem 2rem rgba(212, 175, 127, 0.8); /* Use rem for consistency */
 }
 
-/* Tombol sekunder */
+/* Secondary Button */
 .btn-secondary {
   background: #444;
   color: #fff;
   padding: 0.8rem 2rem;
   font-weight: 600;
-  border-radius: 30px;
+  border-radius: 3rem; /* Use rem for consistency */
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  box-shadow: 0 3px 10px rgba(68, 68, 68, 0.6);
+  box-shadow: 0 0.3rem 1rem rgba(68, 68, 68, 0.6); /* Use rem for consistency */
 }
 
 .btn-secondary:hover {
   background: #666;
-  box-shadow: 0 5px 15px rgba(102, 102, 102, 0.8);
+  box-shadow: 0 0.5rem 1.5rem rgba(102, 102, 102, 0.8); /* Use rem for consistency */
 }
 
-/* Quantity controls */
+/* Quantity Controls */
 .quantity-controls {
   margin-top: 0.6rem;
   display: flex;
@@ -709,12 +796,12 @@ body.dark-bg {
 }
 
 .qty-btn {
-  background: #b6895b;
+  background: var(--primary); /* Use var for consistency */
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 2.8rem; /* Use rem for consistency */
+  height: 2.8rem; /* Use rem for consistency */
   font-size: 1.3rem;
   font-weight: 700;
   cursor: pointer;
@@ -731,42 +818,14 @@ body.dark-bg {
 
 .qty-number {
   font-weight: 600;
-  min-width: 20px;
+  min-width: 2rem; /* Use rem for consistency (20px) */
   text-align: center;
   font-size: 1.1rem;
 }
 
-/* Sesuaikan cart item */
-.cart-item {
-  display: flex;
-  align-items: center;
-  background: #292929;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
+/* Sesuaikan cart item (Duplicate section - removed duplicate styling from below) */
+/* The cart-item, cart-img, cart-info, cart-name, cart-price styles are defined twice.
+   I'm assuming the first set (lines 357-377) is the intended one and the second is a copy.
+   I will remove the duplicate. */
 
-.cart-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-right: 1rem;
-  background: #333;
-}
-
-.cart-info {
-  flex: 1;
-}
-
-.cart-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.cart-price {
-  color: #b6895b;
-  font-size: 1rem;
-}
+/* Removed duplicate cart item styles from here */
