@@ -7,6 +7,65 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    .qr-section {
+      background: #232323;
+      color: #fff;
+      margin: 100px auto 30px auto;
+      border-radius: 15px;
+      max-width: 500px;
+      padding: 2rem 2rem 1rem 2rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .qr-section h2 {
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+    .qr-img {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      display: block;
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      background: #fff;
+      padding: 1rem;
+    }
+    .qr-instruction {
+      color: #b6895b;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    .btn-back {
+      margin-top: 2rem;
+      padding: 0.7rem 1.5rem;
+      background: #b6895b;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-back:hover {
+      background: #a3764d;
+    }
+    @media (max-width:600px){
+      .qr-section {
+        max-width: 95vw;
+        padding: 1rem 0.5rem 0.5rem 0.5rem;
+      }
+      .qr-img {
+        max-width: 95vw;
+        padding: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body class="dark-bg">
   <nav class="navbar">
@@ -26,62 +85,22 @@
     </div>
   </nav>
 
-  <section class="cart-section-dark" style="margin-top:100px;">
-    <h2>Pembayaran</h2>
-    <form id="payment-form" class="payment-form">
-      <div class="form-group">
-        <label for="name">Nama Lengkap</label>
-        <input type="text" id="name" required>
-      </div>
-      <div class="form-group">
-        <label for="card">Nomor Kartu</label>
-        <input type="text" id="card" maxlength="19" placeholder="1234 5678 9012 3456" required>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="exp">Exp</label>
-          <input type="text" id="exp" maxlength="5" placeholder="MM/YY" required>
-        </div>
-        <div class="form-group">
-          <label for="cvv">CVV</label>
-          <input type="text" id="cvv" maxlength="4" required>
-        </div>
-      </div>
-      <button type="submit" class="btn primary" style="width:100%;">Bayar</button>
-    </form>
-    <div id="payment-success" class="payment-success" style="display:none;">
-      <div class="checkmark">&#10003;</div>
-      <h3>Pembayaran Berhasil!</h3>
-      <p>Terima kasih telah berbelanja di KOPIK.</p>
-      <button onclick="window.location.href='index.html'" class="btn primary">Kembali ke Beranda</button>
+  <section class="qr-section">
+    <h2>Pembayaran via QR DANA</h2>
+    <div class="qr-instruction">
+      Silakan scan QR di bawah ini menggunakan aplikasi DANA Anda untuk menyelesaikan pembayaran.
     </div>
+    <img src="payment/dana-qr.jpg" alt="QR DANA Ahram" class="qr-img" />
+    <button class="btn-back" onclick="window.location.href='index.html'">Kembali ke Beranda</button>
   </section>
 
-  <footer>
-    <div class="social-media">
-      <a href="https://instagram.com/ahramwla" target="_blank"><i data-feather="instagram"></i></a>
-    </div>
-    <div class="links">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#about">Tentang kami</a>
-      <a href="index.html#menu">Menu</a>
-      <a href="index.html#contact">Kontak</a>
-    </div>
-    <div class="credit">
-      <p>Created by <a href="#">Ahram</a>. | &copy; 2024.</p>
-    </div>
-  </footer>
   <script>feather.replace();</script>
   <script>
-    document.getElementById("payment-form").onsubmit = function(e) {
-      e.preventDefault();
-      document.getElementById("payment-form").style.display = "none";
-      document.getElementById("payment-success").style.display = "block";
-      localStorage.removeItem('cart');
-    };
     // Cart count
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     document.getElementById("cart-count").textContent = cart.length;
+    // Kosongkan cart setelah pembayaran
+    localStorage.removeItem('cart');
   </script>
 </body>
 </html>
