@@ -66,18 +66,20 @@
       margin-bottom: 1rem;
       font-size: 1.1rem;
     }
-    .btn-back {
-      margin-top: 2rem;
-      padding: 0.7rem 1.5rem;
+    .btn-back, .btn-paid {
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
       background: #b6895b;
       color: #fff;
       border: none;
-      border-radius: 6px;
-      font-size: 1rem;
+      border-radius: 30px;
+      font-size: 1.1rem;
       cursor: pointer;
-      transition: background 0.2s;
+      font-weight: 600;
+      transition: background 0.3s;
+      user-select: none;
     }
-    .btn-back:hover {
+    .btn-back:hover, .btn-paid:hover {
       background: #a3764d;
     }
     @media (max-width:600px){
@@ -183,17 +185,16 @@
       Silakan scan QR di bawah ini menggunakan aplikasi DANA Anda untuk menyelesaikan pembayaran.
     </div>
     <img src="payment/dana-qr.jpg" alt="QR DANA Ahram" class="qr-img" />
+    <button class="btn-paid" id="btn-paid">Sudah Bayar!</button>
     <button class="btn-back" onclick="window.location.href='index.html'">Kembali ke Beranda</button>
   </section>
 
   <!-- Modal Form -->
   <div id="buyer-form-modal" class="modal-overlay" style="display:none;">
     <div class="modal-content">
-      <h3>Kamu siapa? Biar kopinya kami antar!</h3>
+      <h3>Isi nama kamu agar kopinya kami antar!</h3>
       <form id="buyer-form" action="https://formspree.io/f/mjkregno" method="POST">
         <input type="text" name="nama" placeholder="Nama lengkap" required />
-        <input type="text" name="alamat" placeholder="Alamat pengantaran" required />
-        <input type="tel" name="nohp" placeholder="No HP" required />
         <div style="margin-top:1rem;">
           <button type="submit" class="btn primary">Kirim</button>
           <button type="button" id="close-modal" class="btn secondary">Batal</button>
@@ -208,19 +209,27 @@
   <script>
     feather.replace();
 
-    // Tampilkan modal otomatis saat halaman dimuat
-    window.onload = () => {
-      document.getElementById('buyer-form-modal').style.display = 'flex';
-      // Update cart count
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      document.getElementById("cart-count").textContent = cart.length;
-    };
+    // Update cart count
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById("cart-count").textContent = cart.length;
 
-    const form = document.getElementById('buyer-form');
+    const btnPaid = document.getElementById('btn-paid');
     const modal = document.getElementById('buyer-form-modal');
+    const form = document.getElementById('buyer-form');
     const successMsg = document.getElementById('form-success');
     const closeBtn = document.getElementById('close-modal');
 
+    // Tampilkan modal saat tombol "Sudah Bayar!" diklik
+    btnPaid.onclick = () => {
+      modal.style.display = 'flex';
+    };
+
+    // Tutup modal saat klik batal
+    closeBtn.onclick = () => {
+      modal.style.display = 'none';
+    };
+
+    // Submit form ke Formspree via fetch API
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
@@ -244,10 +253,6 @@
         alert('Gagal mengirim data, periksa koneksi internet.');
       }
     });
-
-    closeBtn.onclick = () => {
-      modal.style.display = 'none';
-    };
   </script>
 </body>
 </html>
